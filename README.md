@@ -44,5 +44,6 @@ Em caso de erro ao acessar arquivos:
 ```bash
 sudo chown -R $(whoami) ./alembic
 ```
+![image](https://github.com/user-attachments/assets/dee02350-bc5e-4a8c-95cb-76dcaa7e6fad)
 
 ![image](https://github.com/user-attachments/assets/420d64dd-e863-4699-97d7-aa6753a92121)

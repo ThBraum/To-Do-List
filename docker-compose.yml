@@ -2,7 +2,7 @@ version: "3.8"
 
 x-env: &default_env
   POSTGRES_USER: ${POSTGRES_USER:-postgres}
-  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-example}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pixel}
   POSTGRES_DB: ${POSTGRES_DB:-todo}
   POSTGRES_HOST: postgres
   POSTGRES_PORT: 5432
@@ -41,7 +41,6 @@ services:
     environment: *default_env
     volumes:
       - ./server:/app/server
-      - ./server/exec:/app/serverexec
       - ./alembic.ini:/app/alembic.ini
       - ./.tmp/volumes/tmp:/app/.tmp
 

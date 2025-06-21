@@ -24,7 +24,8 @@ COPY --from=poetry_base /app /app/
 COPY ./server /app/server
 COPY ./exec /app/exec
 COPY ./exec/start /app/exec/start
-COPY ./server/alembic.ini /app/alembic.ini
+COPY alembic.ini /app/alembic.ini
+
 
 ARG VERSION
 ARG MODE

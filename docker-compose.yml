@@ -1,0 +1,49 @@
+version: "3.8"
+
+x-env: &default_env
+  POSTGRES_USER: ${POSTGRES_USER:-postgres}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-example}
+  POSTGRES_DB: ${POSTGRES_DB:-todo}
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+  MODE: ${MODE:-LOCAL}
+  VERSION: ${VERSION:-0.0.1}
+  FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+
+x-service-defaults: &default_service
+  restart: always
+  depends_on:
+    - postgres
+  networks:
+    - internal
+
+services:
+  postgres:
+    image: postgres:16.1
+    ports:
+      - "5531:5432"
+    volumes:
+      - ./.tmp/volumes/pg:/var/lib/postgresql/data
+    environment: *default_env
+    networks:
+      - internal
+
+  api:
+    <<: *default_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION}
+        MODE: ${MODE}
+    ports:
+      - "7071:7071"
+    environment: *default_env
+    volumes:
+      - ./server:/app/server
+      - ./server/exec:/app/serverexec
+      - ./server/alembic.ini:/app/server/alembic.ini
+      - ./.tmp/volumes/tmp:/app/.tmp
+
+networks:
+  internal:

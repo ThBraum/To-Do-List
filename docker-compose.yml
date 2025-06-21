@@ -42,7 +42,7 @@ services:
     volumes:
       - ./server:/app/server
       - ./server/exec:/app/serverexec
-      - ./server/alembic.ini:/app/server/alembic.ini
+      - ./alembic.ini:/app/alembic.ini
       - ./.tmp/volumes/tmp:/app/.tmp
 
 networks:

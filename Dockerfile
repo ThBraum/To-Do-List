@@ -15,7 +15,7 @@ ARG POETRY_VERSION=1.7.1
 RUN pip install "poetry==$POETRY_VERSION" && \
     poetry config virtualenvs.in-project true
 
-COPY ./server/pyproject.toml ./server/poetry.lock ./
+COPY pyproject.toml poetry.lock ./
 RUN poetry install --only main
 
 FROM python_base
@@ -24,7 +24,7 @@ COPY --from=poetry_base /app /app/
 COPY ./server /app/server
 COPY ./exec /app/exec
 COPY ./exec/start /app/exec/start
-COPY ./alembic.ini /app/alembic.ini
+COPY ./server/alembic.ini /app/alembic.ini
 
 ARG VERSION
 ARG MODE

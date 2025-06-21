@@ -44,5 +44,15 @@ services:
       - ./alembic.ini:/app/alembic.ini
       - ./.tmp/volumes/tmp:/app/.tmp
 
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "4200:80"
+    networks:
+      - internal
+
+
 networks:
   internal:

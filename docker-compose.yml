@@ -3,12 +3,12 @@ version: "3.8"
 x-env: &default_env
   POSTGRES_USER: ${POSTGRES_USER:-postgres}
   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pixel}
-  POSTGRES_DB: ${POSTGRES_DB:-todo}
+  POSTGRES_DB: ${POSTGRES_DB:-pixel}
   POSTGRES_HOST: postgres
   POSTGRES_PORT: 5432
   MODE: ${MODE:-LOCAL}
   VERSION: ${VERSION:-0.0.1}
-  FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+  FRONTEND_URL: ${FRONTEND_URL:-http://localhost:4200}
 
 x-service-defaults: &default_service
   restart: always

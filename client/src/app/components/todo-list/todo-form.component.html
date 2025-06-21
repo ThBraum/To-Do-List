@@ -1,0 +1,6 @@
+<h3>Nova Tarefa</h3>
+<form (ngSubmit)="addTodo()">
+  <input [(ngModel)]="todo.title" name="title" placeholder="Título" required />
+  <input [(ngModel)]="todo.description" name="description" placeholder="Descrição" />
+  <button type="submit">Adicionar</button>
+</form>
